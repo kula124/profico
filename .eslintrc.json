@@ -1,0 +1,84 @@
+{
+  "env": {
+      "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+    
+},
+"plugins": [
+    "react",
+    "@typescript-eslint"
+],
+  "rules": {
+      "curly": [
+          2,
+          "all"
+      ],
+      "semi": ["error", "never"],
+      "max-len": [
+          "error",
+          120
+      ],
+      "newline-after-var": [
+          2,
+          "always"
+      ],
+      "newline-before-return": "error",
+      "no-console": 1,
+      "object-curly-spacing": [
+          "error",
+          "always"
+      ],
+      "padding-line-between-statements": [
+          "error",
+          {
+              "blankLine": "always",
+              "prev": "*",
+              "next": "if"
+          },
+          {
+              "blankLine": "any",
+              "prev": "block",
+              "next": "if"
+          },
+          {
+              "blankLine": "always",
+              "prev": "if",
+              "next": "*"
+          },
+          {
+              "blankLine": "any",
+              "prev": "if",
+              "next": "block"
+          },
+          {
+              "blankLine": "always",
+              "prev": "export",
+              "next": "*"
+          }
+      ],
+      "react/jsx-max-props-per-line": 1,
+      "indent": ["error", 2],
+      "react/prop-types": 0,
+      "react/jsx-sort-props": 1,
+      "react/no-did-update-set-state": 0,
+      "sort-keys": "warn",
+      "sort-vars": "warn",
+      "no-use-before-define": "off",
+      "react/jsx-uses-vars": "error",
+      "react/jsx-uses-react": "error",
+      "@typescript-eslint/no-use-before-define": ["error"]
+  }
+}
