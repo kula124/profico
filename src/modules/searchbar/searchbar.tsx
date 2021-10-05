@@ -7,16 +7,18 @@ import styles from './styles.module.scss'
 
 const SearchBar : React.FC = () => {
   return (
-    <section className={styles.main}>
+    <header className={styles.main}>
       <Logo />
-      <input
-        maxLength={100}
-        placeholder = 'Search news'
-        type='text'
-      />
-      <BigButton onClick={() => {}}
-        text='search' />
-    </section>
+      <div className={styles.searchBox}>
+        <input
+          maxLength={100}
+          placeholder = 'Search news'
+          type='text'
+        />
+        <BigButton onClick={() => {}}
+          text='search' />
+      </div>
+    </header>
   )
 }
  
