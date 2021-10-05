@@ -4,20 +4,30 @@ import styles from './styles.module.scss'
 
 interface BigButtonProps {
   text: string,
+  sizes?: {
+    w: string,
+    h: string
+  }
   color?: string,
-  onClick: React.MouseEventHandler<HTMLButtonElement>
+  textColor?:string,
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
  
 const BigButton: React.FC<BigButtonProps> = (props) => {
   return <button className={styles.main}
     onClick={props.onClick}
-    style={{ backgroundColor: props.color }}>
+    style={{ backgroundColor: props.color,
+      color: props.textColor,
+      height: props.sizes?.h,
+      width: props.sizes?.w
+    }}>
     {props.text}
   </button>
 }
 
 BigButton.defaultProps= {
-  color: '#BB1E1E'
+  color: '#BB1E1E',
+  textColor: 'white'
 }
  
 export default BigButton
