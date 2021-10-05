@@ -9,7 +9,7 @@ const CategoryItem: React.FC<ICategory> = ({ name, icon: Icon }) => {
   return (
     <li className={styles.main}>
       <Icon />
-      <span>{name}</span>
+      <p>{name}</p>
     </li>
   )
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { ReactComponent as homeIcon } from '../assets/icons/Home.svg'
-import { ReactComponent as healthIcon } from '../assets/icons/Health.svg'
-import { ReactComponent as generalIcon } from '../assets/icons/News.svg'
-import { ReactComponent as scienceIco } from '../assets/icons/Science.svg'
-import { ReactComponent as sportsIcon } from '../assets/icons/Sports.svg'
-import { ReactComponent as technologyIcon } from '../assets/icons/TV-Guide.svg'
-import { ReactComponent as businessIcon } from '../assets/icons/Business.svg'
+import { ReactComponent as homeIcon } from 'assets/icons/Home.svg'
+import { ReactComponent as healthIcon } from 'assets/icons/Health.svg'
+import { ReactComponent as generalIcon } from 'assets/icons/News.svg'
+import { ReactComponent as scienceIco } from 'assets/icons/Science.svg'
+import { ReactComponent as sportsIcon } from 'assets/icons/Sports.svg'
+import { ReactComponent as technologyIcon } from 'assets/icons/TV-Guide.svg'
+import { ReactComponent as businessIcon } from 'assets/icons/Business.svg'
 
 
 
