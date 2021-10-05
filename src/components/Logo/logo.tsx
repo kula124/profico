@@ -1,13 +1,19 @@
 import React from 'react'
  
 const style:React.CSSProperties = {
-  fontSize: '2.5rem',
+  fontFamily: 'Inter',
+  fontSize: '2rem',
+  fontWeight: 'bold',
+  height: '39px',
+  letterSpacing: 0,
+  lineHeight: '39px',
+  width: '139px',
 }
 
 const Logo: React.FC = () => {
   return (<p>
-    <span style={{ ...style, color: 'red' }}>My</span>
-    <span style={{ ...style, color: 'black' }}>News</span>
+    <span style={{ ...style, color: '#BB1E1E' }}>My</span>
+    <span style={{ ...style, color: '#1D1D1B' }}>News</span>
   </p>)
 }
  
