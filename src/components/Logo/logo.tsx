@@ -3,7 +3,7 @@ import React from 'react'
 const style:React.CSSProperties = {
   fontFamily: 'Inter',
   fontSize: '2rem',
-  fontWeight: 'bold',
+  fontWeight: 900,
   height: '39px',
   letterSpacing: 0,
   lineHeight: '39px',
