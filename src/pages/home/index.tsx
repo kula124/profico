@@ -5,6 +5,7 @@ import HorizontalSpacer from 'modules/hSpacer/hSpacer'
 import SearchBar from 'modules/searchbar/searchbar'
 
 import styles from './homepage.module.scss'
+import CategoriesBar from 'modules/categoriesBar/categories'
 
 const Homepage:React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Homepage:React.FC = () => {
       <main className={styles.main}>
         <SearchBar />
         <HorizontalSpacer />
+        <CategoriesBar />
       </main>
     </>
   )
