@@ -1,13 +1,20 @@
-import HomePagePrompt from 'modules/homepagePrompt/hpPrompt'
-import SearchBar from 'modules/searchbar/searchbar'
 import React from 'react'
+
+import HomePagePrompt from 'modules/homepagePrompt/hpPrompt'
+import HorizontalSpacer from 'modules/hSpacer/hSpacer'
+import SearchBar from 'modules/searchbar/searchbar'
+
+import styles from './homepage.module.scss'
 
 const Homepage:React.FC = () => {
   return (
-    <div>
+    <>
       <HomePagePrompt />
-      <SearchBar />
-    </div>
+      <main className={styles.main}>
+        <SearchBar />
+        <HorizontalSpacer />
+      </main>
+    </>
   )
 }
 
