@@ -6,6 +6,8 @@ import Logo from 'components/Logo/logo'
 import { ReactComponent as SearchIcon } from 'assets/icons/Search.svg'
 import styles from './styles.module.scss'
 
+// TODO Add functionality to the component!
+
 const SearchBar : React.FC = () => {
   return (
     <header className={styles.main}>
