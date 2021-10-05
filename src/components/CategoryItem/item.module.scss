@@ -1,6 +1,46 @@
+@use "../../styles/colors.scss" as c;
+
+$size: 63px;
+
 .main {
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  height: $size;
+  width: $size;
+  position: sticky;
+  & g > g:first-of-type {
+    fill: c.$iconGray;
+  }
+
+  span {
+    height: 14px;
+    opacity: 0.5;
+    color: #1D1D1B;
+    font-family: "Inter V";
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    line-height: 14px;
+    text-align: center;
+  }
+
+  &:hover {
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 2px -1px #C8CAD1;
+    cursor: pointer;
+    & g > g {
+      fill: c.$logoRed;
+    }
+    & g  {
+      opacity: 1;
+    }
+
+    span {
+      opacity: 1;
+      color: c.$logoRed;
+    }
+  }
 }
