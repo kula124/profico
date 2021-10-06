@@ -2,6 +2,24 @@
 
 $size: 63px;
 
+li.main.selected {
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 2px -1px #C8CAD1;
+  cursor: pointer;
+  & g > g {
+    fill: c.$logoRed;
+  }
+  & g  {
+    opacity: 1;
+  }
+
+  p {
+    opacity: 1;
+    color: c.$logoRed;
+  }
+}
+
 .main {
   display: flex;
   flex-flow: column;
