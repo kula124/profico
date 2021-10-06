@@ -28,10 +28,8 @@ export interface Query {
   pageNumber?: number
 }
 
-export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
-  const sources = await populateSources()
-
-  return instance.get<INewsResponse>('/everything', {
+const runFetch = async (q: Query, sources: ISource[]):Promise<INewsArticle[]> => {
+  return instance.get<INewsResponse>('/top-headlines', {
     params: { 
       page: q.pageNumber, 
       pageSize: q.limit,
@@ -44,7 +42,20 @@ export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
   }))
 }
 
+export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
+  const sources = await populateSources()
+
+
+  if (!q.q) {
+    q.q = 'new'
+  }
+
+  return runFetch(q, sources)
+}
+
 export const getNewsByCategory = async (q: Query) : Promise<INewsArticle[]> => {
+  const sources = await populateSources()
+
   if (!q.category) {
     throw { 
       code: '600',
@@ -52,13 +63,5 @@ export const getNewsByCategory = async (q: Query) : Promise<INewsArticle[]> => {
     }
   }
 
-  
-  return instance.get<INewsResponse>('/top-headlines', {
-    params: {
-      category: q.category,
-      page: q.pageNumber, 
-      pageSize: q.limit,
-      q: q.q,
-    }
-  }).then(r => r.data.articles)
+  return runFetch(q, sources)
 }
