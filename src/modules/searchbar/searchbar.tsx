@@ -29,7 +29,6 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
           maxLength={100}
           onChange={e => setInput(e.target.value)}
           placeholder = 'Search news'
-          type='search'
           value={input}
         />
         <BigButton
