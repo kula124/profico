@@ -31,6 +31,8 @@ export interface Query {
 const runFetch = async (q: Query, sources: ISource[]):Promise<INewsArticle[]> => {
   return instance.get<INewsResponse>('/top-headlines', {
     params: { 
+      category: q.category,
+      language: 'en',
       page: q.pageNumber, 
       pageSize: q.limit,
       q: q.q,
