@@ -9,6 +9,7 @@ interface BigButtonProps {
     h: string
   }
   color?: string,
+  type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'], 
   textColor?:string,
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
@@ -20,7 +21,8 @@ const BigButton: React.FC<BigButtonProps> = (props) => {
       color: props.textColor,
       height: props.sizes?.h,
       width: props.sizes?.w
-    }}>
+    }}
+    type={props.type}>
     {props.text}
   </button>
 }

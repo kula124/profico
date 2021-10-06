@@ -1,27 +1,42 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React from 'react'
+import React, { useState } from 'react'
 
 import BigButton from 'components/BigButton/bigButton'
 import Logo from 'components/Logo/logo'
 import { ReactComponent as SearchIcon } from 'assets/icons/Search.svg'
 import styles from './styles.module.scss'
 
-// TODO Add functionality to the component!
+export interface IUseQuery {
+  setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
+}
 
-const SearchBar : React.FC = () => {
+const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
+  const [input, setInput] = useState<string>('')
+
   return (
     <header className={styles.main}>
       <Logo />
-      <div className={styles.searchBox}>
+      <form 
+        className={styles.searchBox}
+        onSubmit={e => {
+          setQuery(input)
+          e.preventDefault()
+        }}
+        role='search'
+      >
         <SearchIcon />
         <input
           maxLength={100}
+          onChange={e => setInput(e.target.value)}
           placeholder = 'Search news'
-          type='text'
+          value={input}
         />
-        <BigButton onClick={() => {}}
-          text='search' />
-      </div>
+        <BigButton
+          onClick={() => setQuery(input)}
+          text='search'
+          type='submit'
+        />
+      </form>
     </header>
   )
 }
