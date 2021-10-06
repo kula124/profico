@@ -16,7 +16,7 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
   return (
     <header className={styles.main}>
       <Logo />
-      <form action='' 
+      <form action='#' 
         className={styles.searchBox}
         onSubmit={() => {
           setQuery(input)
