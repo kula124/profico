@@ -2,8 +2,12 @@ import { INewsArticle } from 'constants/newsItem'
 import * as React from 'react'
 
 import styles from './thumb.module.scss'
+
+interface NewsArticleThumbProps extends INewsArticle {
+  location?: string
+}
  
-const NewsArticleThumb: React.FC<INewsArticle> = ({ author, url, title, category, urlToImage }) => {
+const NewsArticleThumb: React.FC<NewsArticleThumbProps> = ({ author, url, title, category, urlToImage, location }) => {
   return (
     <a href={url}
       rel='noreferrer'
@@ -12,7 +16,7 @@ const NewsArticleThumb: React.FC<INewsArticle> = ({ author, url, title, category
         <img alt='article image'
           src={urlToImage} />
         <article>
-          <p>{category || 'general'}</p>
+          <p>{!location ? category || 'general' : location}</p>
           <h1>{title}</h1>
           <span>{author || 'author: n/a'}</span>
         </article>
