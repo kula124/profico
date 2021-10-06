@@ -6,6 +6,7 @@ import SearchBar from 'modules/searchbar/searchbar'
 
 import styles from './homepage.module.scss'
 import CategoriesBar from 'modules/categoriesBar/categories'
+import NewsContent from 'modules/newsContent/news'
 
 const Homepage:React.FC = () => {
   return (
@@ -14,7 +15,10 @@ const Homepage:React.FC = () => {
       <main className={styles.main}>
         <SearchBar />
         <HorizontalSpacer />
-        <CategoriesBar />
+        <div className={styles.content}>
+          <CategoriesBar />
+          <NewsContent />
+        </div>
       </main>
     </>
   )
