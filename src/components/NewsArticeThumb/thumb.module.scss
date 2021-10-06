@@ -7,7 +7,7 @@ $article-w: 321px;
   display: flex;
   flex-flow: column;
   list-style: none;
-  width: $article-w ;
+  width: $article-w;
   height: $article-h; 
   background-color: white;
   border-radius: 10px;
@@ -51,12 +51,15 @@ $article-w: 321px;
     }
 
     span {
+      display: inline-block;
+      text-decoration: none;
       display: block;
       font-size: 12px;
       justify-self: flex-end;
       align-self: flex-start;
       margin-top: auto;
       padding-bottom: 1rem;
+      color: c.$logoBlack;
     }
   }
   

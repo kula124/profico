@@ -1,4 +1,3 @@
-import { CategoryName } from 'constants/categories'
 import { INewsArticle } from 'constants/newsItem'
 import * as React from 'react'
 
@@ -6,10 +5,10 @@ import styles from './thumb.module.scss'
  
 const NewsArticleThumb: React.FC<INewsArticle> = ({ author, url, title, category, urlToImage }) => {
   return (
-    <li className={styles.item}>
-      <a href={url}
-        rel='noreferrer'
-        target='_blank' >
+    <a href={url}
+      rel='noreferrer'
+      target='_blank' >
+      <li className={styles.item}>
         <img alt='article image'
           src={urlToImage} />
         <article>
@@ -17,8 +16,8 @@ const NewsArticleThumb: React.FC<INewsArticle> = ({ author, url, title, category
           <h1>{title}</h1>
           <span>{author || 'author: n/a'}</span>
         </article>
-      </a>
-    </li>
+      </li>
+    </a>
   )
 }
  
