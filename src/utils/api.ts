@@ -28,17 +28,18 @@ export interface Query {
   pageNumber?: number
 }
 
-const runFetch = async (q: Query, sources: ISource[]):Promise<INewsArticle[]> => {
-  return instance.get<INewsResponse>('/top-headlines', {
+const runFetch = async (q: Query, sources: ISource[], path?: string):Promise<INewsArticle[]> => {
+  return instance.get<INewsResponse>(path || '/top-headlines', {
     params: { 
       category: q.category,
+      // country: 'us',
       language: 'en',
       page: q.pageNumber, 
       pageSize: q.limit,
       q: q.q,
     }
   }).then(r => r.data.articles.map(a => {
-    a.category = sources.find(s => s.id === a.source.id)?.category
+    a.category = sources.find(s => s.id === a.source.id || s.name === a.source.name)?.category
     
     return a
   }))
@@ -47,12 +48,7 @@ const runFetch = async (q: Query, sources: ISource[]):Promise<INewsArticle[]> =>
 export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
   const sources = await populateSources()
 
-
-  if (!q.q) {
-    q.q = 'new'
-  }
-
-  return runFetch(q, sources)
+  return runFetch({ ...q, q:'new' }, sources, '/everything')
 }
 
 export const getNewsByCategory = async (q: Query) : Promise<INewsArticle[]> => {
