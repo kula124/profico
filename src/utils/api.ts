@@ -1,11 +1,11 @@
 import axios from "axios"
-import { INewsArticle, Source } from "constants/newsItem"
+import { INewsArticle, INewsResponse } from "constants/newsItem"
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_NEWS_API_ENDPOINT,
   headers: {
     "Content-Type": 'application/json',
-    "X-Api-Key": process.env.REACT_APP_API_CRED || '',
+    "X-Api-Key": process.env.REACT_APP_NEWS_API_CRED || 'no-key',
   }
 })
 
@@ -17,13 +17,13 @@ export interface Query {
 }
 
 export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
-  return instance.get<INewsArticle[]>('/everything', {
+  return instance.get<INewsResponse>('/everything', {
     params: { 
       page: q.pageNumber, 
       pageSize: q.limit,
       q: q.q,
     }
-  }).then(r => r.data)
+  }).then(r => r.data.articles)
 }
 
 export const getNewsByCategory = async (q: Query) : Promise<INewsArticle[]> => {
@@ -35,12 +35,12 @@ export const getNewsByCategory = async (q: Query) : Promise<INewsArticle[]> => {
   }
 
   
-  return instance.get<INewsArticle[]>('/top-headlines', {
+  return instance.get<INewsResponse>('/top-headlines', {
     params: {
       category: q.category,
       page: q.pageNumber, 
       pageSize: q.limit,
       q: q.q,
     }
-  }).then(r => r.data)
+  }).then(r => r.data.articles)
 }
