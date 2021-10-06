@@ -10,7 +10,8 @@ import { ReactComponent as businessIcon } from 'assets/icons/Business.svg'
 
 
 
-export type CategoryName = 'home' | 'health' | 'technology' | 'general' | 'business' | 'science' | 'sports'
+export type CategoryName = 'home' | 'health' | 'technology' | 'general' 
+| 'business' | 'science' | 'sports' | 'entertainment'
 
 export interface ICategory {
   name: CategoryName,

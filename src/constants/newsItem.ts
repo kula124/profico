@@ -1,3 +1,5 @@
+import { CategoryName } from "./categories"
+
 /* eslint-disable max-len */
 export interface INewsArticle {
   source:      Source;
@@ -8,6 +10,7 @@ export interface INewsArticle {
   urlToImage:  string;
   publishedAt: Date;
   content:     string;
+  category?: CategoryName
 }
 
 export interface Source {
@@ -15,8 +18,27 @@ export interface Source {
   name: string;
 }
 
+type Status = 'ok' | 'error'
+
+export interface ISource {
+  id:          string;
+  name:        string;
+  description: string;
+  url:         string;
+  category:    CategoryName;
+  language:    string;
+  country:     string;
+}
+
 export interface INewsResponse {
   articles: INewsArticle[],
-  status: boolean,
+  status: Status,
   totalResults: number,
+  message?: string,
+  code?: number,
+}
+
+export interface ISourcesResponse {
+  status: Status,
+  sources: ISource[]
 }
