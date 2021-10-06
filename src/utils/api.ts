@@ -1,4 +1,5 @@
 import axios from "axios"
+
 import { INewsArticle, INewsResponse, ISource, ISourcesResponse } from "constants/newsItem"
 
 const instance = axios.create({
@@ -9,16 +10,28 @@ const instance = axios.create({
   }
 })
 
-let sourcesCache:ISource[] | null = null 
+interface ICachedSources {
+  timeStamp: Date,
+  sources: ISource[]
+}
 
 const populateSources = async ():Promise<ISource[]> => {
-  if (!sourcesCache) {
-    const sources = await instance.get<ISourcesResponse>('/top-headlines/sources').then(r => r.data.sources)
+  if(localStorage.getItem('sources') != null) {
+    const cachedSources = JSON.parse(localStorage?.getItem('sources') || '{}') as ICachedSources
 
-    sourcesCache = sources
+    if (new Date().getTime() - new Date(cachedSources.timeStamp).getTime()
+      < parseInt(process.env.REACT_APP_CACHE_DURATION!)) {
+      return cachedSources.sources
+    }
   }
 
-  return sourcesCache
+  console.log('running sources get')
+
+  const sources = await instance.get<ISourcesResponse>('/top-headlines/sources').then(r => r.data.sources)
+
+  localStorage.setItem('sources', JSON.stringify({ timeStamp: new Date().getTime(), sources }))
+
+  return sources
 }
 
 export interface Query {
@@ -48,7 +61,11 @@ const runFetch = async (q: Query, sources: ISource[], path?: string):Promise<INe
 export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
   const sources = await populateSources()
 
-  return runFetch({ ...q, q:'new' }, sources, '/everything')
+  if (!q.q) {
+    q.q='new'
+  }
+
+  return runFetch(q, sources, '/everything')
 }
 
 export const getNewsByCategory = async (q: Query) : Promise<INewsArticle[]> => {
