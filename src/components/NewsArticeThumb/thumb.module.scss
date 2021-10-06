@@ -1,28 +1,37 @@
+@use '../../styles/colors.scss' as c;
+
 $article-h: 252px;
 $article-w: 321px;
-$article-p: 20px;
-
-$new-article-w: calc($article-w - calc($article-p / 2));
-$new-article-h: calc($article-h - calc($article-p / 2));
 
 .item {
+  display: flex;
+  flex-flow: column;
   list-style: none;
-  max-width: calc($article-w - calc($article-p / 2));
-  max-height: calc($article-h - calc($article-p / 2));
-  padding: $article-p;
+  width: $article-w;
+  height: $article-h; 
   background-color: white;
   border-radius: 10px;
 
   p {
+    padding: 5px 0;
+    height: 1rem;
+    color: c.$articleCategoryBlue;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.02px;
+    line-height: 1rem;
     margin: 0;
   }
   
   article {
+    padding: 0 20px;
+    height: 100%;
+    // padding-bottom: 20px;
     display: flex;
     flex-flow: column;
     align-items: flex-start;
-    justify-content: space-around;
-    height: calc($new-article-h / 2);
+    justify-content: space-evenly;
 
     h1 {
       text-overflow: ellipsis;
@@ -42,11 +51,20 @@ $new-article-h: calc($article-h - calc($article-p / 2));
     }
 
     span {
+      display: inline-block;
+      text-decoration: none;
+      display: block;
       font-size: 12px;
+      justify-self: flex-end;
+      align-self: flex-start;
+      margin-top: auto;
+      padding-bottom: 1rem;
+      color: c.$logoBlack;
     }
   }
   
   img {
+    border-radius: 10px 10px 0 0;
     object-fit: cover;
     width: 100%;
     max-height: calc($article-h / 2);
