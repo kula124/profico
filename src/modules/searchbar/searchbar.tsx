@@ -16,11 +16,11 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
   return (
     <header className={styles.main}>
       <Logo />
-      <form action='#' 
+      <form 
         className={styles.searchBox}
-        onSubmit={() => {
+        onSubmit={e => {
           setQuery(input)
-          //e.preventDefault()
+          e.preventDefault()
         }}
         role='search'
       >
