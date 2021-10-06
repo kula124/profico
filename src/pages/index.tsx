@@ -3,12 +3,11 @@ import React from 'react'
 import HomePagePrompt from 'modules/homepagePrompt/hpPrompt'
 import HorizontalSpacer from 'modules/hSpacer/hSpacer'
 import SearchBar from 'modules/searchbar/searchbar'
-
 import styles from './homepage.module.scss'
 import CategoriesBar from 'modules/categoriesBar/categories'
 import NewsContent from 'modules/newsContent/news'
 
-const Homepage:React.FC = () => {
+const MainPage:React.FC = () => {
   return (
     <>
       <HomePagePrompt />
@@ -24,4 +23,4 @@ const Homepage:React.FC = () => {
   )
 }
 
-export default Homepage
+export default MainPage
