@@ -15,10 +15,10 @@ const Homepage:React.FC = () => {
       <main className={styles.main}>
         <SearchBar />
         <HorizontalSpacer />
-        <div className={styles.content}>
+        <section className={styles.content}>
           <CategoriesBar />
           <NewsContent />
-        </div>
+        </section>
       </main>
     </>
   )

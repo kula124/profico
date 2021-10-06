@@ -15,6 +15,7 @@ const NewsContent: React.FC = () => {
       <ul>
         {testArray.map(e => <NewsArticleThumb {...e}
           key={e.title} />)}
+        <div className={styles.tst}></div>
       </ul>
     </section>
   )
