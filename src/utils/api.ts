@@ -11,27 +11,8 @@ const instance = axios.create({
 })
 
 interface ICachedSources {
+  sources: ISource[],
   timeStamp: Date,
-  sources: ISource[]
-}
-
-const populateSources = async ():Promise<ISource[]> => {
-  if(localStorage.getItem('sources') != null) {
-    const cachedSources = JSON.parse(localStorage?.getItem('sources') || '{}') as ICachedSources
-
-    if (new Date().getTime() - new Date(cachedSources.timeStamp).getTime()
-      < parseInt(process.env.REACT_APP_CACHE_DURATION!)) {
-      return cachedSources.sources
-    }
-  }
-
-  console.log('running sources get')
-
-  const sources = await instance.get<ISourcesResponse>('/top-headlines/sources').then(r => r.data.sources)
-
-  localStorage.setItem('sources', JSON.stringify({ timeStamp: new Date().getTime(), sources }))
-
-  return sources
 }
 
 export interface Query {
@@ -39,6 +20,27 @@ export interface Query {
   category?: string,
   limit?: number,
   pageNumber?: number
+}
+
+const populateSources = async ():Promise<ISource[]> => {
+  if(localStorage.getItem('sources') != null) {
+    const cachedSources = JSON.parse(localStorage?.getItem('sources') || '{}') as ICachedSources
+
+    if (new Date().getTime() - new Date(cachedSources.timeStamp).getTime()
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      < parseInt(process.env.REACT_APP_CACHE_DURATION!)) {
+      return cachedSources.sources
+    }
+  }
+
+  const sources = await instance.get<ISourcesResponse>('/top-headlines/sources').then(r => r.data.sources)
+
+  localStorage.setItem('sources', JSON.stringify({ 
+    sources,
+    timeStamp: new Date().getTime(), 
+  }))
+
+  return sources
 }
 
 const runFetch = async (q: Query, sources: ISource[], path?: string):Promise<INewsArticle[]> => {

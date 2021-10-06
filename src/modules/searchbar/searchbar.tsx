@@ -16,18 +16,20 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
   return (
     <header className={styles.main}>
       <Logo />
-      <form action='#'
+      <form action='' 
         className={styles.searchBox}
         onSubmit={() => {
           setQuery(input)
           //e.preventDefault()
-        }}>
+        }}
+        role='search'
+      >
         <SearchIcon />
         <input
           maxLength={100}
           onChange={e => setInput(e.target.value)}
           placeholder = 'Search news'
-          type='text'
+          type='search'
           value={input}
         />
         <BigButton
