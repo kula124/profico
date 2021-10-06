@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import HomePagePrompt from 'modules/homepagePrompt/hpPrompt'
 import HorizontalSpacer from 'modules/hSpacer/hSpacer'
@@ -8,15 +8,17 @@ import CategoriesBar from 'modules/categoriesBar/categories'
 import NewsContent from 'modules/newsContent/news'
 
 const MainPage:React.FC = () => {
+  const [query, setQuery] = useState<string>()
+
   return (
     <>
       <HomePagePrompt />
       <main className={styles.main}>
-        <SearchBar />
+        <SearchBar setQuery={setQuery} />
         <HorizontalSpacer />
         <section className={styles.content}>
           <CategoriesBar />
-          <NewsContent />
+          <NewsContent query={query} />
         </section>
       </main>
     </>
