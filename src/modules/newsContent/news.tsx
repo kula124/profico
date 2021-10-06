@@ -6,6 +6,7 @@ import NewsArticleThumb from 'components/NewsArticleThumb/newsThumb'
 import { getNewsByCategory, getNewsByQuery } from 'utils/api'
 
 import styles from './news.module.scss'
+import LatestNews from 'modules/latestNews/latestNews'
  
 const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
@@ -47,7 +48,7 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
         {articles.map(e => <NewsArticleThumb {...e}
           key={e.title}
           location={category==='' ? undefined : category} />)}
-        <div className={styles.tst}></div>
+        <LatestNews />
       </ul> : <div>Loading...</div>}
     </section>
   )
