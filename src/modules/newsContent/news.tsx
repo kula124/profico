@@ -7,7 +7,7 @@ import { getNewsByCategory, getNewsByQuery } from 'utils/api'
 
 import styles from './news.module.scss'
  
-const NewsContent: React.FC = () => {
+const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
@@ -18,8 +18,9 @@ const NewsContent: React.FC = () => {
       const category = location.pathname.split('/')[1]
       
       setLoading(true)
+      setError(false)
       const getNews = category === '' || !category ? getNewsByQuery : getNewsByCategory
-      const r = await getNews({ category, limit: 12 })
+      const r = await getNews({ category, limit: 12, q:query })
         .catch(() => setError(true))
         .finally(() => setLoading(false))
 
@@ -27,7 +28,7 @@ const NewsContent: React.FC = () => {
     }
 
     fetch()
-  }, [location.pathname])
+  }, [location.pathname, query])
 
   if (error) {
     return <div>ERROR!</div>
