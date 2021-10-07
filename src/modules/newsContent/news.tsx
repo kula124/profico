@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
+import useDeepCompareEffect from 'use-deep-compare-effect'
 
 import { INewsArticle } from 'constants/newsItem'
 import NewsArticleThumb from 'components/NewsArticleThumb/newsThumb'
 import { getNewsByCategory, getNewsByQuery } from 'utils/api'
-
-import styles from './news.module.scss'
 import LatestNews from 'modules/latestNews/latestNews'
 import { useBookmarks } from 'hooks/useBookmarks'
-import useDeepCompareEffect from 'use-deep-compare-effect'
 import SkeletonItem from 'components/Loading/newsArticle/skeletonArticle'
 import LatestNewsSkeleton from 'components/Loading/newsArticle/skeletonLatestNews'
- 
+import Error from 'components/Error/error'
+
+import styles from './news.module.scss'
+
 const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
   const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(true)
   const location = useLocation()
   const { cache } = useBookmarks()
 
@@ -63,7 +64,9 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   }, [cache, location.pathname, articles])
 
   if (error) {
-    return <div>ERROR!</div>
+    return <section className={styles.main}>
+      <Error text={'Connection error...'} />
+    </section>
   }
 
   let category = ''
