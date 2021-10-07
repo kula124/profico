@@ -19,7 +19,11 @@ export interface Query {
   q?: string,
   category?: string,
   limit?: number,
-  pageNumber?: number
+  pageNumber?: number,
+  sortBy?: 'publishedAt' | 'relevancy',
+  language?: 'en',
+  from?: string,
+  to?: string
 }
 
 const populateSources = async ():Promise<ISource[]> => {
