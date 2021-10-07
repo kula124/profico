@@ -9,6 +9,8 @@ import styles from './news.module.scss'
 import LatestNews from 'modules/latestNews/latestNews'
 import { useBookmarks } from 'hooks/useBookmarks'
 import useDeepCompareEffect from 'use-deep-compare-effect'
+import SkeletonItem from 'components/Loading/newsArticle/skeletonArticle'
+import LatestNewsSkeleton from 'components/Loading/newsArticle/skeletonLatestNews'
  
 const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
@@ -73,12 +75,20 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   return (
     <section className={styles.main}>
       <h2>News</h2>
-      {!loading && articles ? <ul>
+      {(!loading && articles) && <ul>
         {articles.map(e => <NewsArticleThumb {...e}
           key={e.title}
           location={category==='' ? undefined : category} />)}
         <LatestNews />
-      </ul> : <div>Loading...</div>}
+      </ul>}
+      {loading && 
+        <ul>
+          {(new Array<number>(10).fill(0)).map((x, i) =>
+            <SkeletonItem  key={Math.random() * i} />)
+          }
+          <LatestNewsSkeleton />
+        </ul>
+      }
     </section>
   )
 }

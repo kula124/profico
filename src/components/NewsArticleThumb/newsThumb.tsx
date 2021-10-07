@@ -4,7 +4,6 @@ import { INewsArticle } from 'constants/newsItem'
 import { ReactComponent as BookmarkIcon } from 'assets/icons/Bookmark.svg'
 import styles from './thumb.module.scss'
 import { useBookmarks } from 'hooks/useBookmarks'
-// import { useStore } from 'hooks/useBookmarks'
 
 interface NewsArticleThumbProps extends INewsArticle {
   location?: string
@@ -21,6 +20,7 @@ const NewsArticleThumb: React.FC<NewsArticleThumbProps> = (p) => {
       target='_blank' >
       <li className={styles.item}>
         <img alt='article image'
+          className='skeleton-image'
           src={urlToImage} />
         <article>
           <p>{!location ? category || 'general' : location}</p>
