@@ -50,16 +50,35 @@ $article-w: 321px;
       line-height: 20px;
     }
 
-    span {
-      display: inline-block;
-      text-decoration: none;
-      display: block;
-      font-size: 12px;
-      justify-self: flex-end;
-      align-self: flex-start;
-      margin-top: auto;
-      padding-bottom: 1rem;
-      color: c.$logoBlack;
+    footer{
+      margin: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      span {
+        justify-self: flex-start;
+        display: inline-block;
+        text-decoration: none;
+        display: block;
+        font-size: 12px;
+        justify-self: flex-end;
+        align-self: flex-start;
+        margin-top: auto;
+        color: c.$logoBlack;
+      }
+
+      svg {
+        max-width: 1rem;
+        max-height: 1rem;
+      }
+
+      svg.grayFill {
+        path {
+          fill: c.$iconGray;
+        }
+      }
     }
   }
   

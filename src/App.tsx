@@ -20,6 +20,10 @@ const App:FC = () => {
           <MainPage />
         </Route>
         <Route exact
+          path='/favorites'>
+          <MainPage />
+        </Route>
+        <Route exact
           path='/business'>
           <MainPage />
         </Route>

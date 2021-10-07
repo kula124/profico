@@ -10,6 +10,9 @@ li.main.selected {
   & g > g {
     fill: c.$logoRed;
   }
+  svg path {
+    fill: c.$logoRed;
+  }
   & g  {
     opacity: 1;
   }
@@ -32,6 +35,10 @@ li.main.selected {
     fill: c.$iconGray;
   }
 
+  svg path {
+    fill: c.$iconGray;
+  }
+
   p {
     text-transform: capitalize;
     height: 14px;
@@ -47,20 +54,6 @@ li.main.selected {
   }
 
   &:hover {
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    box-shadow: 0 1px 2px -1px #C8CAD1;
-    cursor: pointer;
-    & g > g {
-      fill: c.$logoRed;
-    }
-    & g  {
-      opacity: 1;
-    }
-
-    p {
-      opacity: 1;
-      color: c.$logoRed;
-    }
+    @extend .selected;
   }
 }

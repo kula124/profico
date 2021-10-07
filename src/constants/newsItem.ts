@@ -10,6 +10,7 @@ export interface INewsArticle {
   urlToImage:  string;
   publishedAt: Date | string;
   content:     string;
+  bookmarked?: boolean,
   category?: CategoryName
 }
 
