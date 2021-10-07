@@ -39,10 +39,16 @@ li.main.selected {
     fill: c.$iconGray;
   }
 
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
   p {
     text-transform: capitalize;
     height: 14px;
     margin-top: 7px;
+    margin-bottom: 0;
     opacity: 0.5;
     color: #1D1D1B;
     font-family: "Inter V";

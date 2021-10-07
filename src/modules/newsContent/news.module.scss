@@ -1,7 +1,18 @@
 .main {
   width: 100%;
+  h2 {
+    height: 24px;
+    width: 49px;
+    color: #1D1D1B;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.15px;
+    line-height: 24px;
+  }
   ul {
     display: grid;
+    padding-left: 0;
     width: 100%;
     grid-template-columns: repeat(3, minmax(240px, 1fr));
     gap: 20px;
