@@ -3,6 +3,7 @@ import * as React from 'react'
 import { INewsArticle } from 'constants/newsItem'
 import { ReactComponent as BookmarkIcon } from 'assets/icons/Bookmark.svg'
 import styles from './thumb.module.scss'
+import { useBookmarks } from 'hooks/useBookmarks'
 // import { useStore } from 'hooks/useBookmarks'
 
 interface NewsArticleThumbProps extends INewsArticle {
@@ -11,6 +12,8 @@ interface NewsArticleThumbProps extends INewsArticle {
  
 const NewsArticleThumb: React.FC<NewsArticleThumbProps> = (p) => {
   const { url, urlToImage, location, category, bookmarked, author, title } = p
+
+  const { toggleCacheElement } = useBookmarks()
 
   return (
     <a href={url}
@@ -28,6 +31,7 @@ const NewsArticleThumb: React.FC<NewsArticleThumbProps> = (p) => {
               onClick={e => {
                 e.stopPropagation()
                 e.preventDefault()
+                toggleCacheElement(p)
               }}/>
           </footer>
         </article>
