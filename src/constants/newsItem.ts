@@ -8,13 +8,13 @@ export interface INewsArticle {
   description: string;
   url:         string;
   urlToImage:  string;
-  publishedAt: Date;
+  publishedAt: Date | string;
   content:     string;
   category?: CategoryName
 }
 
 export interface Source {
-  id:   string;
+  id:   string | null;
   name: string;
 }
 
