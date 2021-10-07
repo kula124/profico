@@ -7,17 +7,24 @@ import { getNewsByCategory, getNewsByQuery } from 'utils/api'
 
 import styles from './news.module.scss'
 import LatestNews from 'modules/latestNews/latestNews'
+import { useBookmarks } from 'hooks/useBookmarks'
+import useDeepCompareEffect from 'use-deep-compare-effect'
  
 const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
   const location = useLocation()
+  const { cache } = useBookmarks()
 
   useEffect(() => {
+    const category = location.pathname.split('/')[1]
+    
+    if (category === 'favorites') {
+      return
+    }
+
     const fetch = async () => {
-      const category = location.pathname.split('/')[1]
-      
       setLoading(true)
       setError(false)
       const getNews = category === '' || !category ? getNewsByQuery : getNewsByCategory
@@ -30,6 +37,28 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
 
     fetch()
   }, [location.pathname, query])
+
+  useDeepCompareEffect (() => {
+    const category = location.pathname.split('/')[1]
+    
+    if (category === 'favorites') {
+      setArticles(cache)
+      
+      return
+    }
+
+    setArticles(prev => {
+      if (prev && prev.length !== 0) {
+        return prev.map(x => {
+          if (!!cache.find(y => y.title === x.title)) {
+            return { ...x, bookmarked: true }
+          }
+
+          return { ...x, bookmarked: false }
+        })
+      }
+    })
+  }, [cache, location.pathname, articles])
 
   if (error) {
     return <div>ERROR!</div>

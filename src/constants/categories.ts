@@ -7,10 +7,10 @@ import { ReactComponent as scienceIco } from 'assets/icons/Science.svg'
 import { ReactComponent as sportsIcon } from 'assets/icons/Sports.svg'
 import { ReactComponent as technologyIcon } from 'assets/icons/TV-Guide.svg'
 import { ReactComponent as businessIcon } from 'assets/icons/Business.svg'
+import { ReactComponent as  FavoritesIcon } from 'assets/icons/Bookmark.svg'
 
 
-
-export type CategoryName = 'home' | 'health' | 'technology' | 'general' 
+export type CategoryName = 'home' | 'favorites' | 'health' | 'technology' | 'general' 
 | 'business' | 'science' | 'sports' | 'entertainment'
 
 export interface ICategory {
@@ -22,6 +22,10 @@ export const categories:ICategory[] = [
   {
     icon: homeIcon,
     name: 'home',
+  },
+  { 
+    icon: FavoritesIcon,
+    name: 'favorites' 
   },
   {
     icon: generalIcon,
