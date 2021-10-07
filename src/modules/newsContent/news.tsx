@@ -21,7 +21,7 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
       setLoading(true)
       setError(false)
       const getNews = category === '' || !category ? getNewsByQuery : getNewsByCategory
-      const r = await getNews({ category, limit: 12, q:query })
+      const r = await getNews({ category, pageSize: 12, q:query })
         .catch(() => setError(true))
         .finally(() => setLoading(false))
 

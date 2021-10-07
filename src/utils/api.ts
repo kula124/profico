@@ -18,7 +18,7 @@ interface ICachedSources {
 export interface Query {
   q?: string,
   category?: string,
-  limit?: number,
+  pageSize?: number,
   pageNumber?: number,
   sortBy?: 'publishedAt' | 'relevancy',
   language?: 'en',
@@ -48,14 +48,13 @@ const populateSources = async ():Promise<ISource[]> => {
 }
 
 const runFetch = async (q: Query, sources: ISource[], path?: string):Promise<INewsArticle[]> => {
+  if (!q.language) {
+    q.language='en'
+  }
+  
   return instance.get<INewsResponse>(path || '/top-headlines', {
     params: { 
-      category: q.category,
-      // country: 'us',
-      language: 'en',
-      page: q.pageNumber, 
-      pageSize: q.limit,
-      q: q.q,
+      ...q
     }
   }).then(r => r.data.articles.map(a => {
     a.category = sources.find(s => s.id === a.source.id || s.name === a.source.name)?.category
