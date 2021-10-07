@@ -5,13 +5,14 @@ import BigButton from 'components/BigButton/bigButton'
 import Logo from 'components/Logo/logo'
 import { ReactComponent as SearchIcon } from 'assets/icons/Search.svg'
 import styles from './styles.module.scss'
+import { defaultSearchValue } from 'constants/consts'
 
 export interface IUseQuery {
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
 const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
-  const [input, setInput] = useState<string>('')
+  const [input, setInput] = useState<string>(defaultSearchValue)
 
   return (
     <header className={styles.main}>
@@ -19,6 +20,14 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
       <form 
         className={styles.searchBox}
         onSubmit={e => {
+          if (input === '') {
+            setInput(defaultSearchValue)
+            setQuery(defaultSearchValue)
+            alert("Input on homepage can't be empty, try searching for something :)")
+            
+            return
+          }
+
           setQuery(input)
           e.preventDefault()
         }}
