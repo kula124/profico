@@ -6,6 +6,7 @@ import Logo from 'components/Logo/logo'
 import { ReactComponent as SearchIcon } from 'assets/icons/Search.svg'
 import styles from './styles.module.scss'
 import { defaultSearchValue } from 'constants/consts'
+import { useMobile } from 'hooks/useMobile'
 
 export interface IUseQuery {
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -13,6 +14,7 @@ export interface IUseQuery {
 
 const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
   const [input, setInput] = useState<string>(defaultSearchValue)
+  const isMobile = useMobile()
 
   return (
     <header className={styles.main}>
@@ -40,12 +42,17 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
           placeholder = 'Search news'
           value={input}
         />
-        <BigButton
-          onClick={() => setQuery(input)}
-          text='search'
-          type='submit'
-        />
+        {!isMobile && 
+          <BigButton
+            onClick={() => setQuery(input)}
+            text='search'
+            type='submit'
+          /> 
+        }
       </form>
+      {isMobile && 
+          <div>burger</div>
+      }
     </header>
   )
 }
