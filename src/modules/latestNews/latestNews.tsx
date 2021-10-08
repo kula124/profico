@@ -12,7 +12,7 @@ import ReactVisibilitySensor from 'react-visibility-sensor'
 
 const LatestNews: React.FC = () => {
   const [latestNews, setLatestNews] = useState<INewsArticle[]>([])
-  const [loading, setLoading] = useState(false)
+  const requestMade = useRef(false)
   const [error, setError] = useState(false)
   const [visible, setVisible] = useState(false)
   const oldest = useRef<INewsArticle>()
@@ -23,14 +23,19 @@ const LatestNews: React.FC = () => {
       return
     }
 
+    if (requestMade.current) {
+      return
+    }
+
     const fetchNewData = async () => {
+      requestMade.current = true
       const r = await getNewsByQuery({
         language: 'en',
         pageSize: 10,
         sortBy: 'publishedAt',
         to: oldest.current ? new Date(oldest.current.publishedAt).toISOString() : undefined
       }).then(list => oldest?.current ? list.filter(x => x.title != oldest.current?.title) : list)
-        .finally(() => setLoading(false))
+        .finally(() => {requestMade.current = false})
         .catch(() => setError(true))
 
       if (r) {
@@ -62,7 +67,6 @@ const LatestNews: React.FC = () => {
       <footer>
         <span>See all news</span>
         <ArrowIcon />
-        {loading && <p>...</p>}
       </footer>
     </section>
   )
