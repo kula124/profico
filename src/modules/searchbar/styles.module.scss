@@ -44,6 +44,7 @@ $search-input-logo-margin: 43px;
       padding: 0;
       width: 100%;
     }
+    position: relative;
     margin-left: $search-input-logo-margin;
     display: flex;
     justify-content: space-between;
@@ -55,7 +56,7 @@ $search-input-logo-margin: 43px;
         width: 16px;
         height: 16px;
         position: absolute;
-        left: 4px;
+        left: -14px;
         z-index: 1;
       }
 
