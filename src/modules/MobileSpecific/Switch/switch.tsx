@@ -4,7 +4,7 @@ import styles from './switch.module.scss'
 
 export type Nav = 'f' | 'l' | ''
 
-const Switch: React.FC<{onSwitch: (a:Nav) => void}> = () => {
+const Switch: React.FC<{onSwitch: (a:Nav) => void}> = ({ onSwitch }) => {
   const [selected, setSelected] = useState<Nav>('')
 
   const isSelected = (f:Nav):boolean => selected === f
@@ -13,7 +13,9 @@ const Switch: React.FC<{onSwitch: (a:Nav) => void}> = () => {
     if (selected === '') {
       setSelected('f')
     }
-  }, [selected])
+
+    onSwitch(selected)
+  }, [onSwitch, selected])
 
   return (
     <nav className={styles.main}>
