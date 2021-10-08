@@ -1,11 +1,21 @@
 import React, { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 import BigButton from 'components/BigButton/bigButton'
 
 import styles from './prompt.module.scss'
+import { mobileWidth } from 'constants/consts'
 
 const HomePagePrompt: React.FC = () => {
   const [shown, setShown] = useState<boolean>(true)
+  
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${mobileWidth})`
+  })
+
+  if (isMobile) {
+    return null
+  }
   
   return (
     <header className={shown ? styles.main : styles.hidden}>
