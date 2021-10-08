@@ -1,9 +1,15 @@
 @use '../../styles/colors.scss' as c;
+@use '../../styles/consts.scss' as *;
 
 $article-h: 252px;
 $article-w: 321px;
 
 .item {
+  @include mobile {
+    Width: 343px;
+    height: 260px;
+  }
+
   display: flex;
   flex-flow: column;
   list-style: none;
