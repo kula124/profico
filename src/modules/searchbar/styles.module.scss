@@ -81,6 +81,7 @@ $search-input-logo-margin: 43px;
         line-height: 16px;
 
       }
+      padding-left: $searchbar-padding-left;
       padding-right: $searchbar-padding-right;
       width: $searchbar-total-width - $searchbar-padding-left - $searchbar-padding-right;
       border-radius: 10px;
