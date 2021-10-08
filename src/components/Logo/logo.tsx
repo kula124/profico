@@ -11,7 +11,7 @@ const style:React.CSSProperties = {
 }
 
 const Logo: React.FC = () => {
-  return (<p>
+  return (<p style={{ display: 'inline-block' }}>
     <span style={{ ...style, color: '#BB1E1E' }}>My</span>
     <span style={{ ...style, color: '#1D1D1B' }}>News</span>
   </p>)

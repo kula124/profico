@@ -1,3 +1,5 @@
+@use '../../styles/consts.scss' as *;
+
 .main {
   width: 100%;
   h2 {
@@ -15,7 +17,7 @@
     padding-left: 0;
     width: 100%;
     grid-template-columns: repeat(3, minmax(240px, 1fr));
-    gap: 20px;
+    gap: $news-gap;
 
     a {
       width: fit-content;

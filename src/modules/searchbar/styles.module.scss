@@ -1,16 +1,29 @@
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-height: 100px;
-  margin: 0 auto;
-  width: clamp(350px, 80%, 1200px);
+@use '../../styles/consts.scss' as *;
 
+$searchbar-total-width: 725px;
+$searchbar-padding-right: 110px;
+$searchbar-padding-left: 40px; 
+$searchbar-margin-top: 35px;
+$searchbar-margin-bottom: 28px;
+
+$search-input-logo-margin: 43px;
+
+.main {
+  margin: 0 auto;
+  width: $body-max-width;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: $searchbar-margin-top;
+  margin-bottom: $searchbar-margin-bottom;  
+  
   & > p {
+    margin: 0;
     margin-right: 50px;
   }
-
+  
   .searchBox {
+    margin-left: $search-input-logo-margin;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,8 +36,9 @@
     }
     
     input {
-      padding-left: 40px;
-      padding-right: 110px;
+      padding-left: $searchbar-padding-left;
+      padding-right: $searchbar-padding-right;
+      width: $searchbar-total-width - $searchbar-padding-left - $searchbar-padding-right;
       border-radius: 10px;
       width: clamp(300px, 80%, 750px);
       height: 50px;

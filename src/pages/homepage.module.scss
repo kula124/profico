@@ -1,6 +1,8 @@
+@use '../styles/consts.scss' as *;
+
 .main {
   margin: 0 auto;
-  width: clamp(375px, 85vw, 1350px);
+  width: $body-max-width;
 }
 .content {
   display: flex;

@@ -1,0 +1,7 @@
+@use '../../styles/consts.scss' as *;
+
+.main {
+  width: $navigation-bar-width;
+  height: $navigation-bar-height + $latest-news-item-height + 10px;
+  margin-right: $navigation-bar-right-margin;
+}
