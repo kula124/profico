@@ -1,8 +1,15 @@
 @use './colors.scss' as c;
+@use './consts.scss' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
 
 body {
+
+  @include mobile{
+    padding: 0 $m-total-page-padding / 2;
+    width: $m-body-max-width - $m-total-page-padding;
+  }
+
   margin: 0;
   background-color: c.$bodyColor;
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Roboto', 'Oxygen',

@@ -3,6 +3,9 @@
 .main {
   margin: 0 auto;
   width: $body-max-width;
+  @include mobile {
+    max-width: $m-body-max-width;
+  }
 }
 .content {
   display: flex;
