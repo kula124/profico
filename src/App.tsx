@@ -8,6 +8,7 @@ import {
 import MainPage from 'pages/'
 import { Context } from 'hooks/useBookmarks'
 import { INewsArticle } from 'constants/newsItem'
+import Fof from 'pages/404'
 
 
 const App:FC = () => {
@@ -59,7 +60,7 @@ const App:FC = () => {
             <MainPage />
           </Route>
           <Route>
-            <div>400 m8</div>
+            <Fof />
           </Route>
         </Switch>
       </Context.Provider>

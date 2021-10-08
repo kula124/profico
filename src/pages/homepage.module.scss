@@ -1,8 +1,12 @@
+@use '../styles/consts.scss' as *;
+
 .main {
   margin: 0 auto;
-  width: clamp(375px, 80vw, 1300px);
+  width: $body-max-width;
 }
 .content {
   display: flex;
   flex-flow: row;
+  justify-content: center;
+  gap: 25px;
 }

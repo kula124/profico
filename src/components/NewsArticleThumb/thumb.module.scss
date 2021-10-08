@@ -86,6 +86,7 @@ $article-w: 321px;
     border-radius: 10px 10px 0 0;
     object-fit: cover;
     width: 100%;
+    min-height: 126px;
     max-height: calc($article-h / 2);
   }
 }

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { defaultSearchValue } from "constants/consts"
 
 import { INewsArticle, INewsResponse, ISource, ISourcesResponse } from "constants/newsItem"
 
@@ -54,7 +55,8 @@ const runFetch = async (q: Query, sources: ISource[], path?: string):Promise<INe
   
   return instance.get<INewsResponse>(path || '/top-headlines', {
     params: { 
-      ...q
+      ...q,
+      q: encodeURI(q.q || '')
     }
   }).then(r => r.data.articles.map(a => {
     a.category = sources.find(s => s.id === a.source.id || s.name === a.source.name)?.category
@@ -67,7 +69,7 @@ export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
   const sources = await populateSources()
 
   if (!q.q) {
-    q.q='new'
+    q.q=defaultSearchValue
   }
 
   return runFetch(q, sources, '/everything')
