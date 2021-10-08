@@ -8,7 +8,7 @@ import styles from './latestNews.module.scss'
 import LatestNewsItem from 'components/LatestNewsItem/latestNewsItem'
 import { getNewsByQuery } from 'utils/api'
 import ReactVisibilitySensor from 'react-visibility-sensor'
-import { useMobile } from 'hooks/useMobile'
+// import { useMobile } from 'hooks/useMobile'
 
 
 const LatestNews: React.FC = () => {
@@ -17,7 +17,7 @@ const LatestNews: React.FC = () => {
   const [error, setError] = useState(false)
   const [visible, setVisible] = useState(false)
   const oldest = useRef<INewsArticle>()
-  const isMobile = useMobile()
+  // const isMobile = useMobile()
 
   useEffect(() => {
 
@@ -49,9 +49,9 @@ const LatestNews: React.FC = () => {
     fetchNewData()
   }, [visible])
 
-  if (isMobile) {
+  /*   if (isMobile) {
     return null
-  }
+  } */
 
   return (
     <section className={styles.main}>
