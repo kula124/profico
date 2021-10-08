@@ -23,8 +23,10 @@ const NewsArticleThumb: React.FC<NewsArticleThumbProps> = (p) => {
           className='skeleton-image'
           src={urlToImage} />
         <article>
-          <p>{!location ? category || 'general' : location}</p>
-          <h1>{title}</h1>
+          <header>
+            <p>{!location ? category || 'general' : location}</p>
+            <h1>{title}</h1>
+          </header>
           <footer>
             <span>{author || 'author: n/a'}</span>
             <BookmarkIcon className={!bookmarked ? styles.grayFill : ''}

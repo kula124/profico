@@ -11,21 +11,9 @@ $article-w: 321px;
   height: $article-h; 
   background-color: white;
   border-radius: 10px;
-
-  p {
-    padding: 5px 0;
-    height: 1rem;
-    color: c.$articleCategoryBlue;
-    font-family: Inter;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: -0.02px;
-    line-height: 1rem;
-    margin: 0;
-  }
   
   article {
-    padding: 0 20px;
+    padding: 0 12px;
     height: 100%;
     // padding-bottom: 20px;
     display: flex;
@@ -33,21 +21,36 @@ $article-w: 321px;
     align-items: flex-start;
     justify-content: space-evenly;
 
-    h1 {
-      text-overflow: ellipsis;
-      margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      max-width: 200ch;
+    header {
 
-      font-size: 1rem;
-      font-weight: 500;
-      font-family: Inter;
-      letter-spacing: -0.11px;
-      color: black;
-      line-height: 20px;
+      p {
+        padding: 5px 0;
+        height: 1rem;
+        color: c.$articleCategoryBlue;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: -0.02px;
+        line-height: 1rem;
+        margin: 0;
+      }
+      
+      h1 {
+        text-overflow: ellipsis;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-width: 200ch;
+        
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Inter;
+        letter-spacing: -0.11px;
+        color: black;
+        line-height: 20px;
+      }
     }
 
     footer{
@@ -56,6 +59,7 @@ $article-w: 321px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 16px;
       
       span {
         justify-self: flex-start;
