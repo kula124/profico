@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useLocation } from 'react-router'
 import useDeepCompareEffect from 'use-deep-compare-effect'
 
@@ -20,6 +20,7 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
   const [mobileSelected, setMobileSelected] = useState<Nav>('f')
+  const requestMade = useRef<boolean>(false)
 
   const location = useLocation()
   const { cache } = useBookmarks()
@@ -32,17 +33,18 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
       return
     }
 
-    if (loading) {
+    if (requestMade.current) {
       return
     }
 
     const fetch = async () => {
       setLoading(true)
+      requestMade.current=true
       setError(false)
       const getNews = category === '' || !category ? getNewsByQuery : getNewsByCategory
       const r = await getNews({ category, pageSize: 12, q:query })
         .catch(() => setError(true))
-        .finally(() => setLoading(false))
+        .finally(() => {setLoading(false); requestMade.current = false})
 
       setArticles(r)
     }
