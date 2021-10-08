@@ -10,20 +10,29 @@ import { useBookmarks } from 'hooks/useBookmarks'
 import SkeletonItem from 'components/Loading/newsArticle/skeletonArticle'
 import LatestNewsSkeleton from 'components/Loading/newsArticle/skeletonLatestNews'
 import Error from 'components/Error/error'
+import Switch, { Nav } from 'modules/MobileSpecific/Switch/switch'
+import { useMobile } from 'hooks/useMobile'
 
 import styles from './news.module.scss'
 
 const NewsContent: React.FC<{query?: string}> = ({ query }) => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
   const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<boolean>(true)
+  const [error, setError] = useState<boolean>(false)
+  const [mobileSelected, setMobileSelected] = useState<Nav>('f')
+
   const location = useLocation()
   const { cache } = useBookmarks()
+  const isMobile = useMobile()
 
   useEffect(() => {
     const category = location.pathname.split('/')[1]
     
     if (category === 'favorites') {
+      return
+    }
+
+    if (loading) {
       return
     }
 
@@ -77,8 +86,11 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
 
   return (
     <section className={styles.main}>
-      <h2>News</h2>
-      {(!loading && articles) && <ul>
+      {!isMobile
+        ? <h2>News</h2>
+        : <Switch onSwitch={f =>setMobileSelected(f)} />
+      }
+      {(!loading && articles) && <ul className={[styles.mobile,styles[mobileSelected]].join(' ')}>
         {articles.map(e => <NewsArticleThumb {...e}
           key={e.title}
           location={category==='' ? undefined : category} />)}
