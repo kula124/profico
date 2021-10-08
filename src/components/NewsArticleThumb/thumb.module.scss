@@ -6,6 +6,12 @@ $article-w: 321px;
 
 .item {
   @include mobile {
+    grid-column: 1;
+  }
+}
+
+.item li, li.item {
+  @include mobile {
     Width: 343px;
     height: 260px;
   }

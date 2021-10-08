@@ -15,10 +15,11 @@ const NewsArticleThumb: React.FC<NewsArticleThumbProps> = (p) => {
   const { toggleCacheElement } = useBookmarks()
 
   return (
-    <a href={url}
+    <a className={styles.item}
+      href={url}
       rel='noreferrer'
       target='_blank' >
-      <li className={styles.item}>
+      <li>
         <img alt='article image'
           className='skeleton-image'
           src={urlToImage} />
