@@ -7,6 +7,7 @@ import { ReactComponent as SearchIcon } from 'assets/icons/Search.svg'
 import styles from './styles.module.scss'
 import { defaultSearchValue } from 'constants/consts'
 import { useMobile } from 'hooks/useMobile'
+import BurgerMenu from 'components/Mobile/BurgerMenu/burger'
 
 export interface IUseQuery {
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -51,7 +52,7 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
         }
       </form>
       {isMobile && 
-          <div>burger</div>
+          <BurgerMenu />
       }
     </header>
   )

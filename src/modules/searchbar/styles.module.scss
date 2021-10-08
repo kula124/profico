@@ -13,7 +13,6 @@ $search-input-logo-margin: 43px;
   @include mobile {
     max-width: $m-body-max-width;
     display: grid;
-    gird-template-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     margin: 0;
@@ -56,7 +55,8 @@ $search-input-logo-margin: 43px;
         width: 16px;
         height: 16px;
         position: absolute;
-        left: 0;
+        left: 4px;
+        z-index: 1;
       }
 
       width: 15px;
@@ -73,11 +73,8 @@ $search-input-logo-margin: 43px;
         width: 100%;
         position: relative;
         // resources
-        height: 16px;
-        width: 89px;
-        opacity: 0.4;
-        color: #000000;
-        font-family: "Inter V";
+        color:c.$logoBlack;
+        font-family: Inter;
         font-size: 15px;
         letter-spacing: -0.2px;
         line-height: 16px;
