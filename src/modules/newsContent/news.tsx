@@ -2,16 +2,18 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useLocation } from 'react-router'
 import useDeepCompareEffect from 'use-deep-compare-effect'
 
-import { INewsArticle } from 'constants/newsItem'
-import NewsArticleThumb from 'components/NewsArticleThumb/newsThumb'
 import { getNewsByCategory, getNewsByQuery } from 'utils/api'
-import LatestNews from 'modules/latestNews/latestNews'
+import { INewsArticle } from 'constants/newsItem'
 import { useBookmarks } from 'hooks/useBookmarks'
+import { useMobile } from 'hooks/useMobile'
+
+import NewsArticleThumb from 'components/NewsArticleThumb/newsThumb'
 import SkeletonItem from 'components/Loading/newsArticle/skeletonArticle'
 import LatestNewsSkeleton from 'components/Loading/newsArticle/skeletonLatestNews'
 import Error from 'components/Error/error'
+
+import LatestNews from 'modules/latestNews/latestNews'
 import Switch, { Nav } from 'modules/MobileSpecific/Switch/switch'
-import { useMobile } from 'hooks/useMobile'
 
 import styles from './news.module.scss'
 

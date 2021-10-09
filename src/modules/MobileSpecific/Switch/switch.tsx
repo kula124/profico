@@ -22,7 +22,7 @@ const Switch: React.FC<{onSwitch: (a:Nav) => void}> = ({ onSwitch }) => {
       <li className={styles[isSelected('f') ? 'selected' : '']}
         onClick={() => setSelected('f')}
       >
-        <span>Features</span>
+        <span>Featured</span>
       </li>
       <li className={styles[isSelected('l') ? 'selected' : '']}
         onClick={() => setSelected('l')}
