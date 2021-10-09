@@ -7,9 +7,11 @@ import SearchBar from 'modules/searchbar/searchbar'
 import styles from './homepage.module.scss'
 import CategoriesBar from 'modules/categoriesBar/categories'
 import NewsContent from 'modules/newsContent/news'
+import { useMobile } from 'hooks/useMobile'
 
 const MainPage:React.FC = () => {
   const [query, setQuery] = useState<string>('latest')
+  const isMobile = useMobile()
 
   return (
     <>
@@ -19,7 +21,7 @@ const MainPage:React.FC = () => {
           <SearchBar />
           <HorizontalSpacer />
           <section className={styles.content}>
-            <CategoriesBar />
+            { !isMobile &&  <CategoriesBar />}
             <NewsContent />
           </section>
         </QueryContext.Provider>

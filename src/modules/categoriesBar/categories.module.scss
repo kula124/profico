@@ -4,4 +4,48 @@
   width: $navigation-bar-width;
   height: $navigation-bar-height + $latest-news-item-height + 10px;
   margin-right: $navigation-bar-right-margin;
+
+  @include mobile {
+    $ms: 95px;
+    $svgs: 30px;
+
+    margin: 0 auto;
+    width: 343px;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, $ms);
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    grid-gap: 16px;
+
+
+    a li {
+
+      height: $ms;
+      width: $ms;
+      border-radius: 7.5px;
+
+      svg {
+        width: $svgs;
+        height: $svgs;
+      }
+
+      p {
+        height: 21px;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.15px;
+        line-height: 21px;
+        text-align: center;
+      }
+
+    }
+
+    a {
+      width: fit-content;
+      height: 63px;
+    }
+  }
 }
