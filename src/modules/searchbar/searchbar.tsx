@@ -11,10 +11,6 @@ import BurgerMenu from 'components/Mobile/BurgerMenu/burger'
 import Searchbox from 'components/Searchbox/searchbox'
 import Modal from 'modules/MobileSpecific/Modal/modal'
 
-export interface IUseQuery {
-  setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
-}
-
 const SearchBar : React.FC<{overrideClass?: string}> = ({ overrideClass }) => {
   const { setQuery, query } = useQuery()
   const [input, setInput] = useState<string>(query)

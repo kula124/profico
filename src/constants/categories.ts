@@ -18,6 +18,8 @@ export interface ICategory {
   icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 }
 
+// Keeping categories outside of module/component definition
+// allows CMS system to define new category dynamically (no code added) 
 export const categories:ICategory[] = [
   {
     icon: homeIcon,

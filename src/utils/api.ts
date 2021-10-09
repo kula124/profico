@@ -47,7 +47,12 @@ const populateSources = async ():Promise<ISource[]> => {
 
   return sources
 }
-
+/**
+ * @param  {Query} q query object to be send to the API. It will be URL-encoded by the function
+ * @param  {ISource[]} sources list of sources to use for categorizing the articles
+ * @param  {string} path? API endpoint
+ * @returns Promise Resolves to list of articles
+ */
 const runFetch = async (q: Query, sources: ISource[], path?: string):Promise<INewsArticle[]> => {
   if (!q.language) {
     q.language='en'
@@ -65,6 +70,10 @@ const runFetch = async (q: Query, sources: ISource[], path?: string):Promise<INe
   }))
 }
 
+/**
+ * @param  {Query} q query object to be send to the API. It will be URL-encoded by the function
+ * @returns Promise resolves to article list
+ */
 export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
   const sources = await populateSources()
 
@@ -75,6 +84,10 @@ export const getNewsByQuery = async (q: Query): Promise<INewsArticle[]> => {
   return runFetch(q, sources, '/everything')
 }
 
+/**
+ * @param  {Query} q query object to be sent to the API. MUST contain 'category' property 
+ * @returns Promise resolves to list of articles
+ */
 export const getNewsByCategory = async (q: Query) : Promise<INewsArticle[]> => {
   const sources = await populateSources()
 

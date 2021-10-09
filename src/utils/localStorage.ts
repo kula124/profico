@@ -1,5 +1,10 @@
 import { INewsArticle } from "constants/newsItem"
 
+/**
+ * This file is dead code
+ * I'm leaving it here in case I reconsider using local storage for bookmark persistance
+ */
+
 export const getSavedArticles = ():INewsArticle[] | null => {
   const articles = localStorage.getItem('saved')
 
