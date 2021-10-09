@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
+import ReactVisibilitySensor from 'react-visibility-sensor'
  
 import { ReactComponent as CircleIcon } from 'assets/icons/Latest.svg'
 import { ReactComponent as ArrowIcon } from 'assets/icons/Down.svg'
 import { INewsArticle } from 'constants/newsItem'
+import { getNewsByQuery } from 'utils/api'
+
+import LatestNewsItem from 'components/LatestNewsItem/latestNewsItem'
 
 import styles from './latestNews.module.scss'
-import LatestNewsItem from 'components/LatestNewsItem/latestNewsItem'
-import { getNewsByQuery } from 'utils/api'
-import ReactVisibilitySensor from 'react-visibility-sensor'
-
 
 const LatestNews: React.FC = () => {
   const [latestNews, setLatestNews] = useState<INewsArticle[]>([])

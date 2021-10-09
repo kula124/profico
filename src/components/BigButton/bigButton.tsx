@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import styles from './styles.module.scss'
+import styles from './bigButton.module.scss'
 
 interface BigButtonProps {
   text: string,

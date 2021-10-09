@@ -1,19 +1,17 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useEffect, useState } from 'react'
 
-import BigButton from 'components/BigButton/bigButton'
-import Logo from 'components/Logo/logo'
-import styles from './styles.module.scss'
 import { defaultSearchValue } from 'constants/consts'
 import { useMobile } from 'hooks/useMobile'
 import { useQuery } from 'hooks/useQuery'
+
+import BigButton from 'components/BigButton/bigButton'
+import Logo from 'components/Logo/logo'
 import BurgerMenu from 'components/Mobile/BurgerMenu/burger'
 import Searchbox from 'components/Searchbox/searchbox'
 import Modal from 'modules/MobileSpecific/Modal/modal'
 
-export interface IUseQuery {
-  setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
-}
+import styles from './header.module.scss'
 
 const SearchBar : React.FC<{overrideClass?: string}> = ({ overrideClass }) => {
   const { setQuery, query } = useQuery()

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
+import { useMobile } from 'hooks/useMobile'
 import BigButton from 'components/BigButton/bigButton'
 
 import styles from './prompt.module.scss'
-import { useMobile } from 'hooks/useMobile'
 
 const HomePagePrompt: React.FC = () => {
   const [shown, setShown] = useState<boolean>(true)
