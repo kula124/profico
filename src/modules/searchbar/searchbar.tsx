@@ -8,6 +8,7 @@ import styles from './styles.module.scss'
 import { defaultSearchValue } from 'constants/consts'
 import { useMobile } from 'hooks/useMobile'
 import BurgerMenu from 'components/Mobile/BurgerMenu/burger'
+import Searchbox from 'components/Searchbox/searchbox'
 
 export interface IUseQuery {
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -37,7 +38,7 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
         role='search'
       >
         <SearchIcon />
-        <input
+        <Searchbox
           maxLength={100}
           onChange={e => setInput(e.target.value)}
           placeholder = 'Search news'
