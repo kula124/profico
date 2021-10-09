@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import BigButton from 'components/BigButton/bigButton'
 import Logo from 'components/Logo/logo'
 import styles from './styles.module.scss'
 import { defaultSearchValue } from 'constants/consts'
 import { useMobile } from 'hooks/useMobile'
+import { useQuery } from 'hooks/useQuery'
 import BurgerMenu from 'components/Mobile/BurgerMenu/burger'
 import Searchbox from 'components/Searchbox/searchbox'
 import Modal from 'modules/MobileSpecific/Modal/modal'
@@ -14,13 +15,18 @@ export interface IUseQuery {
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
-const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
-  const [input, setInput] = useState<string>(defaultSearchValue)
+const SearchBar : React.FC<{overrideClass?: string}> = ({ overrideClass }) => {
+  const { setQuery, query } = useQuery()
+  const [input, setInput] = useState<string>(query)
   const isMobile = useMobile()
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
+  useEffect(() => {
+    setInput(query)
+  }, [query])
+
   return (
-    <header className={styles.main}>
+    <header className={styles[overrideClass || 'main']}>
       <Logo />
       <form 
         className={styles.searchBox}
@@ -32,7 +38,7 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
             
             return
           }
-
+          
           setQuery(input)
           e.preventDefault()
         }}

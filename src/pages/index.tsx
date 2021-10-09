@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { QueryContext } from 'hooks/useQuery'
 import HomePagePrompt from 'modules/homepagePrompt/hpPrompt'
 import HorizontalSpacer from 'modules/hSpacer/hSpacer'
 import SearchBar from 'modules/searchbar/searchbar'
@@ -8,18 +9,20 @@ import CategoriesBar from 'modules/categoriesBar/categories'
 import NewsContent from 'modules/newsContent/news'
 
 const MainPage:React.FC = () => {
-  const [query, setQuery] = useState<string>()
+  const [query, setQuery] = useState<string>('latest')
 
   return (
     <>
       <HomePagePrompt />
       <main className={styles.main}>
-        <SearchBar setQuery={setQuery} />
-        <HorizontalSpacer />
-        <section className={styles.content}>
-          <CategoriesBar />
-          <NewsContent query={query} />
-        </section>
+        <QueryContext.Provider value={{ query, setQuery }}>
+          <SearchBar />
+          <HorizontalSpacer />
+          <section className={styles.content}>
+            <CategoriesBar />
+            <NewsContent />
+          </section>
+        </QueryContext.Provider>
       </main>
     </>
   )

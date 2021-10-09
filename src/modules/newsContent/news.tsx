@@ -6,6 +6,7 @@ import { getNewsByCategory, getNewsByQuery } from 'utils/api'
 import { INewsArticle } from 'constants/newsItem'
 import { useBookmarks } from 'hooks/useBookmarks'
 import { useMobile } from 'hooks/useMobile'
+import { useQuery } from 'hooks/useQuery'
 
 import NewsArticleThumb from 'components/NewsArticleThumb/newsThumb'
 import SkeletonItem from 'components/Loading/newsArticle/skeletonArticle'
@@ -17,12 +18,13 @@ import Switch, { Nav } from 'modules/MobileSpecific/Switch/switch'
 
 import styles from './news.module.scss'
 
-const NewsContent: React.FC<{query?: string}> = ({ query }) => {
+const NewsContent: React.FC = () => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
   const [mobileSelected, setMobileSelected] = useState<Nav>('f')
   const requestMade = useRef<boolean>(false)
+  const { query }= useQuery()
 
   const location = useLocation()
   const { cache } = useBookmarks()
