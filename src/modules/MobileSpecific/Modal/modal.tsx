@@ -3,9 +3,9 @@ import { createPortal } from 'react-dom'
 
 import { modalRootName } from 'constants/consts'
 import CategoriesBar from 'modules/categoriesBar/categories'
+import SearchBar from 'modules/header/header'
 
 import styles from './modal.module.scss'
-import SearchBar from 'modules/header/header'
 
 const Modal: React.FC<{isOpen: boolean, close: () => void}> = ({ isOpen, close }) => {
   const portalHandle = document.getElementById(modalRootName)

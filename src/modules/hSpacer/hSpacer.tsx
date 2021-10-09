@@ -1,5 +1,6 @@
-import { useMobile } from 'hooks/useMobile'
 import  React from 'react'
+
+import { useMobile } from 'hooks/useMobile'
 
 const style: React.CSSProperties = {
   border: '1px solid #979797',
