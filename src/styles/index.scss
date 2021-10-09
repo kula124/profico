@@ -1,9 +1,17 @@
 @use './colors.scss' as c;
+@use './consts.scss' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
 
 body {
+  overflow-x: scroll;
+
+  & > * {
+    overflow-x: scroll;
+  }
+
   margin: 0;
+  margin-right: 0;
   background-color: c.$bodyColor;
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

@@ -10,7 +10,7 @@
   background-image: url('../../assets/images/redHeaderBackgound.png');
 
   .content {
-    width: $body-max-width;
+    max-width: $body-max-width;
     margin: 0 auto;
     height: 100%;
     display: flex;

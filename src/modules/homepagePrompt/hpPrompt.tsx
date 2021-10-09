@@ -3,9 +3,15 @@ import React, { useState } from 'react'
 import BigButton from 'components/BigButton/bigButton'
 
 import styles from './prompt.module.scss'
+import { useMobile } from 'hooks/useMobile'
 
 const HomePagePrompt: React.FC = () => {
   const [shown, setShown] = useState<boolean>(true)
+  const isMobile = useMobile()
+
+  if (isMobile) {
+    return null
+  }
   
   return (
     <header className={shown ? styles.main : styles.hidden}>

@@ -38,8 +38,8 @@ const LatestNews: React.FC = () => {
         .finally(() => {requestMade.current = false})
         .catch(() => setError(true))
 
-      if (r) {
-        setLatestNews(ln => [...ln, ...r])
+      if (r) { // magics, do not touch
+        setLatestNews(ln => [...Array.from(new Map([...ln, ...r].map(item => [item['title'], item])).values())])
         oldest.current=r[r.length-1]
       }
     }

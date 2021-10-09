@@ -2,7 +2,12 @@
 
 .main {
   margin: 0 auto;
-  width: $body-max-width;
+  max-width: $body-max-width;
+  @include mobile {
+    max-width: $m-body-max-width;
+    width: auto;
+    padding: 0 16px;
+  }
 }
 .content {
   display: flex;

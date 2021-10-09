@@ -1,3 +1,4 @@
+import { useMobile } from 'hooks/useMobile'
 import  React from 'react'
 
 const style: React.CSSProperties = {
@@ -9,6 +10,12 @@ const style: React.CSSProperties = {
 }
  
 const HorizontalSpacer: React.FunctionComponent = () => {
+  const isMobile = useMobile()
+
+  if (isMobile) {
+    return null
+  }
+
   return <hr style={style} />
 }
  

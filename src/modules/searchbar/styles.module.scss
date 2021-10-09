@@ -1,16 +1,18 @@
 @use '../../styles/consts.scss' as *;
-
-$searchbar-total-width: 725px;
-$searchbar-padding-right: 110px;
-$searchbar-padding-left: 40px; 
-$searchbar-margin-top: 35px;
-$searchbar-margin-bottom: 28px;
-
-$search-input-logo-margin: 43px;
+@use '../../styles/colors.scss' as c;
 
 .main {
+  @include mobile {
+    max-width: $m-body-max-width;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0;
+    padding: 0;
+  }
+
   margin: 0 auto;
-  width: $body-max-width;
+  max-width: $body-max-width;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -18,50 +20,62 @@ $search-input-logo-margin: 43px;
   margin-bottom: $searchbar-margin-bottom;  
   
   & > p {
+    @include mobile {
+      margin: 0;
+    }
+
     margin: 0;
     margin-right: 50px;
   }
   
   .searchBox {
+    @include mobile {
+      grid-column: 1 / 3;
+      margin: 0;
+      grid-row: 2;
+      padding: 0;
+      width: 100%;
+    }
+    position: relative;
     margin-left: $search-input-logo-margin;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: clamp(150px, 80%, 800px);
 
-    svg {
-      width: 15px;
-      height: 15px;
-      transform: translateX(30px);
-    }
-    
-    input {
-      padding-left: $searchbar-padding-left;
-      padding-right: $searchbar-padding-right;
-      width: $searchbar-total-width - $searchbar-padding-left - $searchbar-padding-right;
-      border-radius: 10px;
-      width: clamp(300px, 80%, 750px);
-      height: 50px;
-      background-color: #FFFFFF;
-      box-shadow: 0 1px 2px -1px #C8CAD1;
-      border: none;
-      outline: none;
-      
-      &::placeholder {
-        height: 20px;
-        opacity: 0.4;
-        font-weight: 400;
-        color: #1D1D1B;
-        font-family: "Inter";
-        font-size: 15px;
-        letter-spacing: 0;
-        line-height: 20px;
-      }
-    }
-
     button {
       transform: translateX(-90px);
       cursor: pointer;
+    }
+  }
+}
+
+.modal {
+  @extend .main;
+  @include mobile {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+    & > section {
+      display: none;
+    }
+
+    & > p { 
+      margin-bottom: 64px;
+      margin-top: 111px - 50px;
+  
+      span /*logo*/ {
+        height: 39px;
+        width: 139px;
+        font-family: Inter;
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 39px;
+      }
     }
   }
 }

@@ -2,6 +2,7 @@
 
 .main {
   width: 100%;
+  overflow-x: hidden;
   h2 {
     height: 24px;
     width: 49px;
@@ -13,6 +14,9 @@
     line-height: 24px;
   }
   ul {
+    @include mobile {
+      grid-template-columns: 2fr;
+    }
     display: grid;
     padding-left: 0;
     width: 100%;
@@ -21,6 +25,24 @@
 
     a {
       width: fit-content;
+    }
+  }
+
+  @include mobile {
+    .mobile {
+      width: 200vw;
+      //overflow: hidden;
+      overflow-x: scroll;
+    }
+
+    .f {
+      transition: transform 1s ease;
+      transform: translateX(0);
+    }
+
+    .l {
+      transition: transform 1s ease;
+      transform: translateX(calc(-100vw - $news-gap - $m-total-page-padding / 4));
     }
   }
 }

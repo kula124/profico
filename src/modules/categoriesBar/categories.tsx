@@ -6,6 +6,7 @@ import CategoryItem from 'components/CategoryItem/cItem'
 import styles from './categories.module.scss'
 
 const CategoriesBar: React.FC = () => {
+
   return (
     <ul className={styles.main}>
       {categories.map(c => <CategoryItem key={c.name}

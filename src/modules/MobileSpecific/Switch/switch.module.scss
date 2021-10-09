@@ -1,0 +1,35 @@
+@use '../../../styles/colors.scss' as c;
+
+.main {
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  li {
+    height: 40px;
+    width: 102px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    
+    span { 
+      height: 20px;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.02px;
+      line-height: 20px;
+    }
+  }
+  
+  .selected {
+    color: c.$m-selected-red;
+    border-radius: 20px;
+    background-color: c.$m-selected-bg-pink;
+  }
+}

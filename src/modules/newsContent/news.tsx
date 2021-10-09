@@ -1,24 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useLocation } from 'react-router'
 import useDeepCompareEffect from 'use-deep-compare-effect'
 
-import { INewsArticle } from 'constants/newsItem'
-import NewsArticleThumb from 'components/NewsArticleThumb/newsThumb'
 import { getNewsByCategory, getNewsByQuery } from 'utils/api'
-import LatestNews from 'modules/latestNews/latestNews'
+import { INewsArticle } from 'constants/newsItem'
 import { useBookmarks } from 'hooks/useBookmarks'
+import { useMobile } from 'hooks/useMobile'
+import { useQuery } from 'hooks/useQuery'
+
+import NewsArticleThumb from 'components/NewsArticleThumb/newsThumb'
 import SkeletonItem from 'components/Loading/newsArticle/skeletonArticle'
 import LatestNewsSkeleton from 'components/Loading/newsArticle/skeletonLatestNews'
 import Error from 'components/Error/error'
 
+import LatestNews from 'modules/latestNews/latestNews'
+import Switch, { Nav } from 'modules/MobileSpecific/Switch/switch'
+
 import styles from './news.module.scss'
 
-const NewsContent: React.FC<{query?: string}> = ({ query }) => {
+const NewsContent: React.FC = () => {
   const [articles, setArticles] = useState<INewsArticle[] | void>([])
   const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<boolean>(true)
+  const [error, setError] = useState<boolean>(false)
+  const [mobileSelected, setMobileSelected] = useState<Nav>('f')
+  const requestMade = useRef<boolean>(false)
+  const { query }= useQuery()
+
   const location = useLocation()
   const { cache } = useBookmarks()
+  const isMobile = useMobile()
 
   useEffect(() => {
     const category = location.pathname.split('/')[1]
@@ -27,13 +37,18 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
       return
     }
 
+    if (requestMade.current) {
+      return
+    }
+
     const fetch = async () => {
       setLoading(true)
+      requestMade.current=true
       setError(false)
       const getNews = category === '' || !category ? getNewsByQuery : getNewsByCategory
       const r = await getNews({ category, pageSize: 12, q:query })
         .catch(() => setError(true))
-        .finally(() => setLoading(false))
+        .finally(() => {setLoading(false); requestMade.current = false})
 
       setArticles(r)
     }
@@ -77,8 +92,11 @@ const NewsContent: React.FC<{query?: string}> = ({ query }) => {
 
   return (
     <section className={styles.main}>
-      <h2>News</h2>
-      {(!loading && articles) && <ul>
+      {!isMobile
+        ? <h2>News</h2>
+        : <Switch onSwitch={f =>setMobileSelected(f)} />
+      }
+      {(!loading && articles) && <ul className={[styles.mobile,styles[mobileSelected]].join(' ')}>
         {articles.map(e => <NewsArticleThumb {...e}
           key={e.title}
           location={category==='' ? undefined : category} />)}
