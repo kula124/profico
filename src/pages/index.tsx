@@ -8,9 +8,10 @@ import styles from './homepage.module.scss'
 import CategoriesBar from 'modules/categoriesBar/categories'
 import NewsContent from 'modules/newsContent/news'
 import { useMobile } from 'hooks/useMobile'
+import { defaultSearchValue } from 'constants/consts'
 
 const MainPage:React.FC = () => {
-  const [query, setQuery] = useState<string>('latest')
+  const [query, setQuery] = useState<string>(defaultSearchValue)
   const isMobile = useMobile()
 
   return (
