@@ -13,20 +13,6 @@
   background-color: c.$bodyColor;
   align-items: center;
 
-  & > p { 
-    margin-bottom: 64px;
-
-    span /*logo*/ {
-      height: 39px;
-      width: 139px;
-      font-family: Inter;
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: 0;
-      line-height: 39px;
-    }
-  }
-
   div.close {
     margin-top: 30px;
     margin-right: 5px;

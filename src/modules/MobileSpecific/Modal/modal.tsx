@@ -2,11 +2,12 @@ import React from 'react'
 import { createPortal } from 'react-dom'
 
 import { modalRootName } from 'constants/consts'
-import Logo from 'components/Logo/logo'
-import Searchbox from 'components/Searchbox/searchbox'
+//import Logo from 'components/Logo/logo'
+//import Searchbox from 'components/Searchbox/searchbox'
 import CategoriesBar from 'modules/categoriesBar/categories'
 
 import styles from './modal.module.scss'
+import SearchBar from 'modules/searchbar/searchbar'
 
 const Modal: React.FC<{isOpen: boolean, close: () => void}> = ({ isOpen, close }) => {
   const portalHandle = document.getElementById(modalRootName)
@@ -20,8 +21,7 @@ const Modal: React.FC<{isOpen: boolean, close: () => void}> = ({ isOpen, close }
       <div className={styles.close}
         onClick={close}>
       </div>
-      <Logo />
-      <Searchbox />
+      <SearchBar overrideClass='modal'/>
       <CategoriesBar />
     </main>
   ), portalHandle) : null

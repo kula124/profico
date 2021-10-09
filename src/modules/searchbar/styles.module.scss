@@ -43,23 +43,39 @@
     align-items: center;
     width: clamp(150px, 80%, 800px);
 
-    svg {
-      @include mobile {
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        left: -14px;
-        z-index: 1;
-      }
-
-      width: 15px;
-      height: 15px;
-      transform: translateX(30px);
-    }
-
     button {
       transform: translateX(-90px);
       cursor: pointer;
+    }
+  }
+}
+
+.modal {
+  @extend .main;
+  @include mobile {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+    & > section {
+      display: none;
+    }
+
+    & > p { 
+      margin-bottom: 64px;
+      margin-top: 111px - 50px;
+  
+      span /*logo*/ {
+        height: 39px;
+        width: 139px;
+        font-family: Inter;
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 39px;
+      }
     }
   }
 }
