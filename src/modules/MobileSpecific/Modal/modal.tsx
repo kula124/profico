@@ -17,9 +17,10 @@ const Modal: React.FC<{isOpen: boolean, close: () => void}> = ({ isOpen, close }
   
   return isOpen ? createPortal((
     <main className={styles.main}>
+      <div className={styles.close}
+        onClick={close}>
+      </div>
       <Logo />
-      <p className={styles.close}
-        onClick={close}>x</p>
       <Searchbox />
       <CategoriesBar />
     </main>

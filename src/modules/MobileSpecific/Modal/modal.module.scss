@@ -1,0 +1,63 @@
+@use '../../../styles/colors.scss' as c;
+
+.main {
+  display: flex;
+  position: fixed;
+  width: calc(100vw - 32px);
+  padding: 0 16px;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  flex-flow: column;
+  z-index: 2;
+  background-color: c.$bodyColor;
+  align-items: center;
+
+  & > p { 
+    margin-bottom: 64px;
+
+    span /*logo*/ {
+      height: 39px;
+      width: 139px;
+      font-family: Inter;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 39px;
+    }
+  }
+
+  div.close {
+    margin-top: 30px;
+    margin-right: 5px;
+    position: relative;
+    height: 20px;
+    width: 20px;
+    align-self: flex-end;
+
+    @mixin x {
+      content: '';
+      height: 4px;
+      width: 24px;
+      bottom: 8px;
+      left: -2px;
+      border-radius: 1px;
+      background-color: #1D1D1B;
+      position: absolute;
+    }
+
+    &:after {
+      @include x;
+      transform: rotateZ(45deg);
+    }
+
+    &:before {
+      @include x;
+      transform: rotateZ(-45deg);
+    }
+  }
+
+  & > div >input {
+    width: 303px;
+  }
+}
