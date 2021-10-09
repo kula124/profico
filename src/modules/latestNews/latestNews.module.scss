@@ -49,6 +49,23 @@ $padding-l: 10px;
     overflow-y: scroll;
     flex-flow: column;
     max-height: 400px;
+    
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 100vw;
+    }
+
+    &::-webkit-scrollbar-track {
+      // background-color: gray;
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      height: 68px;
+      border-radius: 100vw;
+      width: 1px;
+      background-color: rgba(0,0,0,0.24)
+    }
   }
 
   footer {
