@@ -9,6 +9,7 @@ import { defaultSearchValue } from 'constants/consts'
 import { useMobile } from 'hooks/useMobile'
 import BurgerMenu from 'components/Mobile/BurgerMenu/burger'
 import Searchbox from 'components/Searchbox/searchbox'
+import Modal from 'modules/MobileSpecific/Modal/modal'
 
 export interface IUseQuery {
   setQuery: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -17,6 +18,7 @@ export interface IUseQuery {
 const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
   const [input, setInput] = useState<string>(defaultSearchValue)
   const isMobile = useMobile()
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   return (
     <header className={styles.main}>
@@ -52,8 +54,12 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
           /> 
         }
       </form>
-      {isMobile && 
-          <BurgerMenu />
+      {isMobile &&
+        <React.Fragment>
+          <BurgerMenu onClickCallback={() => setModalIsOpen(true)} />
+          <Modal close={() => setModalIsOpen(false)}
+            isOpen={modalIsOpen} />
+        </React.Fragment>
       }
     </header>
   )
