@@ -5,7 +5,7 @@ import { modalRootName } from 'constants/consts'
 import CategoriesBar from 'modules/categoriesBar/categories'
 
 import styles from './modal.module.scss'
-import SearchBar from 'modules/searchbar/searchbar'
+import SearchBar from 'modules/header/header'
 
 const Modal: React.FC<{isOpen: boolean, close: () => void}> = ({ isOpen, close }) => {
   const portalHandle = document.getElementById(modalRootName)

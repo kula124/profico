@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import BigButton from 'components/BigButton/bigButton'
 import Logo from 'components/Logo/logo'
-import styles from './styles.module.scss'
+import styles from './header.module.scss'
 import { defaultSearchValue } from 'constants/consts'
 import { useMobile } from 'hooks/useMobile'
 import { useQuery } from 'hooks/useQuery'
