@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 
 import BigButton from 'components/BigButton/bigButton'
 import Logo from 'components/Logo/logo'
-import { ReactComponent as SearchIcon } from 'assets/icons/Search.svg'
 import styles from './styles.module.scss'
 import { defaultSearchValue } from 'constants/consts'
 import { useMobile } from 'hooks/useMobile'
@@ -39,7 +38,6 @@ const SearchBar : React.FC<IUseQuery> = ({ setQuery }) => {
         }}
         role='search'
       >
-        <SearchIcon />
         <Searchbox
           maxLength={100}
           onChange={e => setInput(e.target.value)}

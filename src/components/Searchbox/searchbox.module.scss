@@ -2,12 +2,39 @@
 @use '../../styles/colors.scss' as c;
 
 .main {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include mobile {  
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  svg {
+    @include mobile {
+      width: 16px;
+      top: 16px;
+      height: 16px;
+      position: absolute;
+      left: -14px;
+      z-index: 1;
+    }
+
+    width: 15px;
+    height: 15px;
+    transform: translateX(30px);
+  }
+}
+
+.main .input {
   @include mobile {
     padding: 0;
     margin: 0;
     display: inline-block;
     padding-left: $searchbar-padding-left;
-    width: 100%;
+    width: calc(100% - $searchbar-padding-left);
     position: relative;
     // resources
     color:c.$logoBlack;
@@ -16,12 +43,14 @@
     letter-spacing: -0.2px;
     line-height: 16px;
   }
+  // display: inline-block;
 
   padding-left: $searchbar-padding-left;
   padding-right: $searchbar-padding-right;
   width: $searchbar-total-width - $searchbar-padding-left - $searchbar-padding-right;
   border-radius: 10px;
-  width: clamp(300px, 80%, 750px);
+  //width: clamp(300px, 80%, 750px);
+
   height: 50px;
   background-color: #FFFFFF;
   box-shadow: 0 1px 2px -1px #C8CAD1;
