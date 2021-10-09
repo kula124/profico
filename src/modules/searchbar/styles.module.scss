@@ -1,14 +1,6 @@
 @use '../../styles/consts.scss' as *;
 @use '../../styles/colors.scss' as c;
 
-$searchbar-total-width: 725px;
-$searchbar-padding-right: 110px;
-$searchbar-padding-left: 40px; 
-$searchbar-margin-top: 35px;
-$searchbar-margin-bottom: 28px;
-
-$search-input-logo-margin: 43px;
-
 .main {
   @include mobile {
     max-width: $m-body-max-width;
@@ -63,55 +55,6 @@ $search-input-logo-margin: 43px;
       width: 15px;
       height: 15px;
       transform: translateX(30px);
-    }
-    
-    input {
-      @include mobile {
-        padding: 0;
-        margin: 0;
-        display: inline-block;
-        padding-left: $searchbar-padding-left;
-        width: 100%;
-        position: relative;
-        // resources
-        color:c.$logoBlack;
-        font-family: Inter;
-        font-size: 15px;
-        letter-spacing: -0.2px;
-        line-height: 16px;
-
-      }
-      padding-left: $searchbar-padding-left;
-      padding-right: $searchbar-padding-right;
-      width: $searchbar-total-width - $searchbar-padding-left - $searchbar-padding-right;
-      border-radius: 10px;
-      width: clamp(300px, 80%, 750px);
-      height: 50px;
-      background-color: #FFFFFF;
-      box-shadow: 0 1px 2px -1px #C8CAD1;
-      border: none;
-      outline: none;
-      
-      &::placeholder {
-        @include mobile {
-          height: 16px;
-          width: 89px;
-          opacity: 0.4;
-          color: c.$logoBlack;
-          font-family: Inter;
-          font-size: 15px;
-          letter-spacing: -0.2px;
-          line-height: 16px;
-        }
-        height: 20px;
-        opacity: 0.4;
-        font-weight: 400;
-        color: #1D1D1B;
-        font-family: "Inter";
-        font-size: 15px;
-        letter-spacing: 0;
-        line-height: 20px;
-      }
     }
 
     button {
